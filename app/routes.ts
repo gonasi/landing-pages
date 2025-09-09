@@ -1,6 +1,18 @@
-import { type RouteConfig, index, route } from "@react-router/dev/routes";
+import {
+  type RouteConfig,
+  index,
+  prefix,
+  route,
+} from "@react-router/dev/routes";
 
 export default [
   index("routes/home.tsx"),
-  route("landing-pages/stepper", "routes/landing-pages/stepper.tsx"),
+
+  ...prefix("landing-pages/components", [
+    route("stepper", "routes/public/landing-pages/components/stepper.tsx"),
+    route(
+      "trust-badges",
+      "routes/public/landing-pages/components/trust-badges.tsx"
+    ),
+  ]),
 ] satisfies RouteConfig;
