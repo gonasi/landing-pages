@@ -11,7 +11,9 @@ export default [
   route("signout", "routes/signout.tsx"),
 
   layout("routes/layouts/private-layout.tsx", [
-    route("ads", "routes/private/ads.tsx"),
+    route("ads", "routes/private/ads.tsx", [
+      route("new", "routes/private/new-add.tsx"),
+    ]),
   ]),
 
   ...prefix("landing-pages/components", [
