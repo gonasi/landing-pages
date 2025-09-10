@@ -18,9 +18,9 @@ export type Database = {
       graphql: {
         Args: {
           extensions?: Json
-          operationName?: string
-          query?: string
           variables?: Json
+          query?: string
+          operationName?: string
         }
         Returns: Json
       }
@@ -34,7 +34,98 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      ad_creatives: {
+        Row: {
+          body_text: string
+          call_to_action: string | null
+          created_at: string
+          created_by: string
+          headline: string
+          id: string
+          image_url: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          body_text: string
+          call_to_action?: string | null
+          created_at?: string
+          created_by: string
+          headline: string
+          id?: string
+          image_url: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          body_text?: string
+          call_to_action?: string | null
+          created_at?: string
+          created_by?: string
+          headline?: string
+          id?: string
+          image_url?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ad_jobs: {
+        Row: {
+          campaign_id: string | null
+          created_at: string
+          created_by: string
+          creative_id: string
+          error_message: string | null
+          id: string
+          meta_ad_id: string | null
+          meta_creative_id: string | null
+          page_id: string | null
+          processed_at: string | null
+          retry_count: number | null
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          campaign_id?: string | null
+          created_at?: string
+          created_by: string
+          creative_id: string
+          error_message?: string | null
+          id?: string
+          meta_ad_id?: string | null
+          meta_creative_id?: string | null
+          page_id?: string | null
+          processed_at?: string | null
+          retry_count?: number | null
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          campaign_id?: string | null
+          created_at?: string
+          created_by?: string
+          creative_id?: string
+          error_message?: string | null
+          id?: string
+          meta_ad_id?: string | null
+          meta_creative_id?: string | null
+          page_id?: string | null
+          processed_at?: string | null
+          retry_count?: number | null
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ad_jobs_creative_id_fkey"
+            columns: ["creative_id"]
+            isOneToOne: false
+            referencedRelation: "ad_creatives"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never

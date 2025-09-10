@@ -16,10 +16,10 @@ export default function AdsPage() {
           <h2>Ads</h2>
           <Link
             to="/ads/new"
-            className="flex items-center space-x-2inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            className="flex items-center space-x-2  mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           >
             <Plus />
-            <span className="hidden md:flex">Create New Ad</span>
+            <span className="hidden md:flex">Upload Creative</span>
           </Link>
         </div>
       </section>
