@@ -2,6 +2,7 @@ import { Card, CardContent } from "~/components/ui/card";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Eye, ImageIcon } from "lucide-react";
+import { useNavigate } from "react-router";
 
 type Creative = {
   id: string;
@@ -24,6 +25,8 @@ export function CreativeCard({
   onPreview,
   onEdit,
 }: CreativeCardProps) {
+  const navigate = useNavigate();
+
   return (
     <Card key={creative.id} className="overflow-hidden">
       <div className="aspect-video relative bg-muted">
@@ -84,10 +87,9 @@ export function CreativeCard({
                 size="sm"
                 variant="outline"
                 className="gap-1 bg-transparent"
-                onClick={() => onPreview(creative)}
+                onClick={() => navigate(`/ads/push/${creative.id}`)}
               >
-                <Eye className="h-3 w-3" />
-                Preview
+                Push To Meta Ads
               </Button>
             )}
             {onEdit && (

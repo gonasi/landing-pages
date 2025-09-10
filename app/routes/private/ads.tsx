@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import type { Route } from "./+types/ads";
 import { createClient } from "~/lib/supabase/supabase.server";
 import { fetchAllAdCreatives } from "~/lib/database/ads";

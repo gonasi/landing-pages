@@ -39,3 +39,35 @@ export const NewAdCreativeSchema = z.object({
 });
 
 export type NewAdCreativeSchemaTypes = z.infer<typeof NewAdCreativeSchema>;
+
+export const PushToMetaSchema = z.object({
+  creative_id: z
+    .uuidv4({ message: "Creative name is required" }),
+
+  page_id: z
+    .string({ message: "Headline is required" })
+    .min(3, { message: "Headline cannot be empty" })
+    .max(255, { message: "Headline too long (max 255 chars)" }),
+
+  page_id: z
+    .string({ message: "Headline is required" })
+    .min(3, { message: "Headline cannot be empty" })
+    .max(255, { message: "Headline too long (max 255 chars)" }),
+
+  campaign_id: z
+    .string({ message: "Headline is required" })
+    .min(3, { message: "Headline cannot be empty" })
+    .max(255, { message: "Headline too long (max 255 chars)" }),
+
+  body_text: z
+    .string({ message: "Body text is required" })
+    .min(1, { message: "Body text cannot be empty" })
+    .max(2000, { message: "Body text too long (max 2000 chars)" }),
+
+  call_to_action: z
+    .string()
+    .max(50, { message: "Call-to-action too long (max 50 chars)" })
+    .optional(),
+});
+
+export type PushToMetaSchemaTypes = z.infer<typeof NewAdCreativeSchema>;

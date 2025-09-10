@@ -13,6 +13,7 @@ export default [
   layout("routes/layouts/private-layout.tsx", [
     route("ads", "routes/private/ads.tsx", [
       route("new", "routes/private/new-add.tsx"),
+      route("push/:adJobId", "routes/private/push-ad.tsx"),
     ]),
   ]),
 
