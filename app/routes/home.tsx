@@ -6,19 +6,31 @@ import {
 } from "remix-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormSchema, type LoginFormSchemaTypes } from "~/lib/schemas/auth";
-import { Form, redirectDocument } from "react-router";
+import { Form, redirect, redirectDocument } from "react-router";
 import { InputField } from "~/components/ui/forms/InputField";
 import { Button } from "~/components/ui/button";
 import type { Route } from "./+types/home";
 import { createClient } from "~/lib/supabase/supabase.server";
 import { dataWithError } from "remix-toast";
 import { signInWithEmailAndPassword } from "~/lib/database/auth";
+import { getUser } from "~/lib/database/profile";
 
 export function meta() {
   return [
     { title: "Login | SMC" },
     { name: "description", content: "Securely log in to your SMC account" },
   ];
+}
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const { supabase } = createClient(request);
+  const { user } = await getUser(supabase);
+
+  if (user) {
+    return redirect("/ads");
+  }
+
+  return null;
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -38,7 +50,7 @@ export async function action({ request }: Route.ActionArgs) {
   if (error)
     return dataWithError(null, error.message || "Incorrect email or password.");
 
-  return redirectDocument(data.redirectTo ?? "/", { headers });
+  return redirectDocument(data.redirectTo ?? "/ads", { headers });
 }
 
 export default function Home() {
@@ -68,10 +80,24 @@ export default function Home() {
               onSubmit={methods.handleSubmit}
               className="space-y-4"
             >
-              <InputField labelProps={{ children: "Email" }} name="email" />
+              <InputField
+                labelProps={{ children: "Email" }}
+                name="email"
+                inputProps={{
+                  autoFocus: true,
+                  className: "lowercase",
+                  autoComplete: "email",
+                  disabled: isDisabled,
+                }}
+              />
               <InputField
                 labelProps={{ children: "Password" }}
                 name="password"
+                inputProps={{
+                  type: "password",
+                  autoComplete: "current-password",
+                  disabled: isDisabled,
+                }}
               />
               <Button type="submit" disabled={isDisabled} className="w-full">
                 {isPending ? "Logging in..." : "Log In"}

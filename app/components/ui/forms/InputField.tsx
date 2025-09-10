@@ -13,6 +13,10 @@ interface InputFieldProps {
   description?: string;
   className?: string;
   labelProps: Omit<LabelProps, "htmlFor" | "error">;
+  inputProps?: Omit<
+    React.ComponentProps<"input">,
+    "error" | "aria-invalid" | "aria-describedby"
+  >;
 }
 
 export function InputField({
@@ -21,6 +25,7 @@ export function InputField({
   description,
   className,
   labelProps,
+  inputProps,
 }: InputFieldProps) {
   const {
     control,
@@ -60,6 +65,7 @@ export function InputField({
               aria-invalid={hasError}
               aria-describedby={description ? descriptionId : undefined}
               {...field}
+              {...inputProps}
             />
           </div>
           <div className="min-h-[32px] pt-1 pb-3">

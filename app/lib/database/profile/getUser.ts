@@ -1,5 +1,7 @@
 import type { TypedSupabaseClient } from "../client";
 
+export type GetUserReturn = Awaited<ReturnType<typeof getUser>>;
+
 export const getUser = async (
   supabase: TypedSupabaseClient,
 ) => {
