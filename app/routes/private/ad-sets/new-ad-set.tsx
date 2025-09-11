@@ -77,12 +77,18 @@ export async function action({ request }: Route.ActionArgs) {
     : dataWithError(null, message);
 }
 
-export default function NewAd({ params, loaderData }: Route.ComponentProps) {
+export default function NewAd({ loaderData }: Route.ComponentProps) {
   const isPending = useIsPending();
 
   const methods = useRemixForm<NewAdSetSchemaTypes>({
     mode: "all",
     resolver,
+    defaultValues: {
+      default_headline: "Discover What’s Possible",
+      default_body_text:
+        "Join thousands who are already experiencing the benefits. Sign up today and take the first step toward achieving your goals.",
+      default_call_to_action: "Learn More",
+    },
   });
 
   const isDisabled = isPending || methods.formState.isSubmitting;

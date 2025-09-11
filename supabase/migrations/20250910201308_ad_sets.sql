@@ -3,13 +3,6 @@ create table public.ad_sets (
   ad_set_id text not null, -- meta ad set id
   campaign_id uuid not null,
   ad_set_name text not null,
-
-  folder_path text not null,
-
-  default_headline text,
-  default_body_text text,
-  default_call_to_action text,
-
   targeting jsonb,
   budget jsonb, -- daily_budget, lifetime_budget, budget_remaining
   schedule jsonb, -- start_time, end_time, schedule_type

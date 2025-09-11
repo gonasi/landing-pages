@@ -24,7 +24,7 @@ export async function fetchAdSets({
 
   if (searchQuery) {
     query = query.or(
-      `ad_set_name.ilike.%${searchQuery}%,folder_path.ilike.%${searchQuery}%`,
+      `ad_set_name.ilike.%${searchQuery}%`,
     );
   }
 

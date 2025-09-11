@@ -17,10 +17,10 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
+          extensions?: Json
+          operationName?: string
           query?: string
           variables?: Json
-          operationName?: string
-          extensions?: Json
         }
         Returns: Json
       }
@@ -182,10 +182,6 @@ export type Database = {
           campaign_id: string
           created_at: string
           created_by: string | null
-          default_body_text: string | null
-          default_call_to_action: string | null
-          default_headline: string | null
-          folder_path: string
           id: string
           schedule: Json | null
           status: string | null
@@ -200,10 +196,6 @@ export type Database = {
           campaign_id: string
           created_at?: string
           created_by?: string | null
-          default_body_text?: string | null
-          default_call_to_action?: string | null
-          default_headline?: string | null
-          folder_path: string
           id?: string
           schedule?: Json | null
           status?: string | null
@@ -218,10 +210,6 @@ export type Database = {
           campaign_id?: string
           created_at?: string
           created_by?: string | null
-          default_body_text?: string | null
-          default_call_to_action?: string | null
-          default_headline?: string | null
-          folder_path?: string
           id?: string
           schedule?: Json | null
           status?: string | null
@@ -273,13 +261,13 @@ export type Database = {
     Functions: {
       bulk_create_draft_creatives: {
         Args: {
-          p_ad_set_id: string
-          p_ad_set_name: string
-          p_files: Json
-          p_default_headline?: string
           p_default_body?: string
           p_default_cta?: string
           p_campaign_id: string
+          p_ad_set_name: string
+          p_ad_set_id: string
+          p_files: Json
+          p_default_headline?: string
         }
         Returns: number
       }
@@ -293,10 +281,10 @@ export type Database = {
       }
       fail_queue_item: {
         Args: {
-          error_details_json?: Json
-          queue_id: string
           error_message: string
+          queue_id: string
           retry_delay_minutes?: number
+          error_details_json?: Json
         }
         Returns: boolean
       }

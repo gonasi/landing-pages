@@ -2,7 +2,7 @@ import { MoreHorizontal, Plus } from "lucide-react";
 import { Outlet, useNavigate } from "react-router";
 import { createClient } from "~/lib/supabase/supabase.server";
 import type { Route } from "./+types/ad-sets";
-import { fetchAdSets, scanFolders } from "~/lib/database/ad-sets";
+import { fetchAdSets } from "~/lib/database/ad-sets";
 import {
   Card,
   CardContent,
@@ -57,10 +57,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   return data;
 }
 
-export default function AdSetsPage({
-  params,
-  loaderData,
-}: Route.ComponentProps) {
+export default function AdSetsPage({ loaderData }: Route.ComponentProps) {
   const { count, data } = loaderData;
   const navigate = useNavigate();
   const truncateText = (text: string | null, maxLength = 50): string => {
@@ -98,7 +95,7 @@ export default function AdSetsPage({
           </div>
           <div className="flex items-center gap-4 mt-4">
             <div className="relative flex-1 max-w-sm">
-              <SearchInput disabled={data.length === 0} />
+              <SearchInput />
             </div>
           </div>
         </CardHeader>
@@ -109,10 +106,6 @@ export default function AdSetsPage({
                 <p className="text-sm text-muted-foreground mb-4">
                   No ad sets found.
                 </p>
-                <Button onClick={() => navigate("/ad-sets/new")}>
-                  <Plus className="mr-2 h-4 w-4" />
-                  Create your first Ad Set
-                </Button>
               </div>
             ) : (
               <>
@@ -121,10 +114,6 @@ export default function AdSetsPage({
                     <TableRow>
                       <TableHead>Ad Set ID</TableHead>
                       <TableHead>Name</TableHead>
-                      <TableHead>Headline</TableHead>
-                      <TableHead>Body Text</TableHead>
-                      <TableHead>CTA</TableHead>
-                      <TableHead>Folder Path</TableHead>
                       <TableHead>Created</TableHead>
                       <TableHead>Updated</TableHead>
                       <TableHead className="w-[50px]"></TableHead>
@@ -142,30 +131,6 @@ export default function AdSetsPage({
                         </TableCell>
                         <TableCell className="font-medium">
                           {adSet.ad_set_name}
-                        </TableCell>
-                        <TableCell>
-                          <div className="max-w-[200px]">
-                            <div className="font-medium text-sm">
-                              {truncateText(adSet.default_headline, 30)}
-                            </div>
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <div className="max-w-[250px]">
-                            <div className="text-sm text-muted-foreground">
-                              {truncateText(adSet.default_body_text, 40)}
-                            </div>
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="secondary">
-                            {adSet.default_call_to_action}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <code className="text-xs bg-muted px-2 py-1 rounded">
-                            /{truncateText(adSet.folder_path, 25)}
-                          </code>
                         </TableCell>
                         <TableCell className="text-sm text-muted-foreground">
                           {formatDate(adSet.created_at)}
