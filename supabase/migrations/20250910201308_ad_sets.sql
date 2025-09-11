@@ -14,8 +14,8 @@ create table public.ad_sets (
   budget jsonb, -- daily_budget, lifetime_budget, budget_remaining
   schedule jsonb, -- start_time, end_time, schedule_type
   status text default 'active' check (status in ('active', 'paused', 'deleted')),
-  created_at timestamp with time zone default now(),
-  updated_at timestamp with time zone default now(),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   created_by uuid references auth.users(id),
   updated_by uuid references auth.users(id),
   

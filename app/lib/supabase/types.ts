@@ -17,10 +17,10 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
-          extensions?: Json
-          operationName?: string
           query?: string
           variables?: Json
+          operationName?: string
+          extensions?: Json
         }
         Returns: Json
       }
@@ -41,7 +41,7 @@ export type Database = {
           body_text: string | null
           call_to_action: string | null
           campaign_id: string
-          created_at: string | null
+          created_at: string
           created_by: string | null
           file_size: number | null
           file_type: string | null
@@ -52,7 +52,7 @@ export type Database = {
           meta_creative_id: string | null
           published_at: string | null
           status: string | null
-          updated_at: string | null
+          updated_at: string
           updated_by: string | null
         }
         Insert: {
@@ -61,7 +61,7 @@ export type Database = {
           body_text?: string | null
           call_to_action?: string | null
           campaign_id: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           file_size?: number | null
           file_type?: string | null
@@ -72,7 +72,7 @@ export type Database = {
           meta_creative_id?: string | null
           published_at?: string | null
           status?: string | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Update: {
@@ -81,7 +81,7 @@ export type Database = {
           body_text?: string | null
           call_to_action?: string | null
           campaign_id?: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           file_size?: number | null
           file_type?: string | null
@@ -92,7 +92,7 @@ export type Database = {
           meta_creative_id?: string | null
           published_at?: string | null
           status?: string | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Relationships: [
@@ -116,7 +116,7 @@ export type Database = {
         Row: {
           attempts: number | null
           completed_at: string | null
-          created_at: string | null
+          created_at: string
           created_by: string | null
           creative_id: string
           error_details: Json | null
@@ -127,13 +127,13 @@ export type Database = {
           scheduled_for: string | null
           started_at: string | null
           status: string | null
-          updated_at: string | null
+          updated_at: string
           updated_by: string | null
         }
         Insert: {
           attempts?: number | null
           completed_at?: string | null
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           creative_id: string
           error_details?: Json | null
@@ -144,13 +144,13 @@ export type Database = {
           scheduled_for?: string | null
           started_at?: string | null
           status?: string | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Update: {
           attempts?: number | null
           completed_at?: string | null
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           creative_id?: string
           error_details?: Json | null
@@ -161,7 +161,7 @@ export type Database = {
           scheduled_for?: string | null
           started_at?: string | null
           status?: string | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Relationships: [
@@ -180,7 +180,7 @@ export type Database = {
           ad_set_name: string
           budget: Json | null
           campaign_id: string
-          created_at: string | null
+          created_at: string
           created_by: string | null
           default_body_text: string | null
           default_call_to_action: string | null
@@ -190,7 +190,7 @@ export type Database = {
           schedule: Json | null
           status: string | null
           targeting: Json | null
-          updated_at: string | null
+          updated_at: string
           updated_by: string | null
         }
         Insert: {
@@ -198,7 +198,7 @@ export type Database = {
           ad_set_name: string
           budget?: Json | null
           campaign_id: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           default_body_text?: string | null
           default_call_to_action?: string | null
@@ -208,7 +208,7 @@ export type Database = {
           schedule?: Json | null
           status?: string | null
           targeting?: Json | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Update: {
@@ -216,7 +216,7 @@ export type Database = {
           ad_set_name?: string
           budget?: Json | null
           campaign_id?: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           default_body_text?: string | null
           default_call_to_action?: string | null
@@ -226,7 +226,7 @@ export type Database = {
           schedule?: Json | null
           status?: string | null
           targeting?: Json | null
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Relationships: [
@@ -242,26 +242,26 @@ export type Database = {
       campaigns: {
         Row: {
           campaign_id: string
-          created_at: string | null
+          created_at: string
           created_by: string | null
           id: string
-          updated_at: string | null
+          updated_at: string
           updated_by: string | null
         }
         Insert: {
           campaign_id: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           id?: string
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Update: {
           campaign_id?: string
-          created_at?: string | null
+          created_at?: string
           created_by?: string | null
           id?: string
-          updated_at?: string | null
+          updated_at?: string
           updated_by?: string | null
         }
         Relationships: []
@@ -273,30 +273,30 @@ export type Database = {
     Functions: {
       bulk_create_draft_creatives: {
         Args: {
-          p_campaign_id: string
           p_ad_set_id: string
           p_ad_set_name: string
           p_files: Json
-          p_default_cta?: string
           p_default_headline?: string
           p_default_body?: string
+          p_default_cta?: string
+          p_campaign_id: string
         }
         Returns: number
       }
       complete_queue_item: {
         Args: {
+          ad_meta_id?: string
           creative_meta_id?: string
           queue_id: string
-          ad_meta_id?: string
         }
         Returns: boolean
       }
       fail_queue_item: {
         Args: {
-          retry_delay_minutes?: number
+          error_details_json?: Json
           queue_id: string
           error_message: string
-          error_details_json?: Json
+          retry_delay_minutes?: number
         }
         Returns: boolean
       }
@@ -305,7 +305,7 @@ export type Database = {
         Returns: {
           attempts: number | null
           completed_at: string | null
-          created_at: string | null
+          created_at: string
           created_by: string | null
           creative_id: string
           error_details: Json | null
@@ -316,7 +316,7 @@ export type Database = {
           scheduled_for: string | null
           started_at: string | null
           status: string | null
-          updated_at: string | null
+          updated_at: string
           updated_by: string | null
         }[]
       }

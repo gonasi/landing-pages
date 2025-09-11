@@ -10,8 +10,8 @@ create table public.ad_publish_queue (
   scheduled_for timestamp with time zone default now(),
   started_at timestamp with time zone,
   completed_at timestamp with time zone,
-  created_at timestamp with time zone default now(),
-  updated_at timestamp with time zone default now(),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   created_by uuid references auth.users(id),
   updated_by uuid references auth.users(id),
   

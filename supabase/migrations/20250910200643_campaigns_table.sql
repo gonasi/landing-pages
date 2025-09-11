@@ -1,8 +1,8 @@
 create table public.campaigns (
   id uuid default gen_random_uuid() primary key,
   campaign_id text not null, -- meta campaign id
-  created_at timestamp with time zone default now(),
-  updated_at timestamp with time zone default now(),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   created_by uuid references auth.users(id),
   updated_by uuid references auth.users(id)
 );

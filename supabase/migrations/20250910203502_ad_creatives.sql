@@ -13,8 +13,8 @@ create table public.ad_creatives (
   status text default 'draft' check (status in ('draft', 'publishing', 'published', 'failed')),
   meta_creative_id text, -- populated after successful publish
   meta_ad_id text, -- populated after ad creation
-  created_at timestamp with time zone default now(),
-  updated_at timestamp with time zone default now(),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
   published_at timestamp with time zone,
   created_by uuid references auth.users(id),
   updated_by uuid references auth.users(id),
