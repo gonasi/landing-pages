@@ -82,7 +82,7 @@ export default function AdSetsPage({
 
   return (
     <>
-      <Card>
+      <Card className="my-8">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>

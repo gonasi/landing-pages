@@ -16,6 +16,10 @@ export default [
     ]),
   ]),
 
+  layout("routes/layouts/logged-in-layout.tsx", [
+    route("ad-sets/:adSetId", "routes/private/ad-sets/view-ad-set.tsx"),
+  ]),
+
   ...prefix("landing-pages/components", [
     route("stepper", "routes/public/landing-pages/components/stepper.tsx"),
     route(
