@@ -67,13 +67,19 @@ export async function action({ request }: Route.ActionArgs) {
     return { errors, defaultValues };
   }
 
-  const { success, message } = await insertCampaignAndAdSet({
+  const {
+    success,
+    message,
+    data: responseData,
+  } = await insertCampaignAndAdSet({
     supabase,
     data,
   });
 
-  return success
-    ? redirectWithSuccess(`/ad-sets/${data.ad_set_id}`, message)
+  console.log("data: ", data);
+
+  return success && responseData
+    ? redirectWithSuccess(`/ad-sets/${responseData.adSetId}`, message)
     : dataWithError(null, message);
 }
 

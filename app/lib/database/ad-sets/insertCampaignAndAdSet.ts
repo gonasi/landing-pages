@@ -56,7 +56,7 @@ export async function insertCampaignAndAdSet({
       return {
         success: false,
         message: `Failed to scan folder /${data.folder_path}`,
-        data: folderScanError.message,
+        data: null,
       };
     }
 
@@ -138,7 +138,7 @@ export async function insertCampaignAndAdSet({
       return {
         success: false,
         message: "Failed to create campaign.",
-        data: campaignInsertError.message,
+        data: null,
       };
     }
 
@@ -166,7 +166,7 @@ export async function insertCampaignAndAdSet({
       return {
         success: false,
         message: "Failed to create ad set. Campaign has been rolled back.",
-        data: adSetInsertError.message,
+        data: null,
       };
     }
 
@@ -238,7 +238,7 @@ export async function insertCampaignAndAdSet({
     return {
       success: false,
       message: "An unexpected error occurred. Please try again.",
-      data: error instanceof Error ? error.message : null,
+      data: null,
     };
   }
 }

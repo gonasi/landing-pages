@@ -60,12 +60,6 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function AdSetsPage({ loaderData }: Route.ComponentProps) {
   const { count, data } = loaderData;
   const navigate = useNavigate();
-  const truncateText = (text: string | null, maxLength = 50): string => {
-    if (!text) return "";
-    return text.length > maxLength
-      ? `${text.substring(0, maxLength)}...`
-      : text;
-  };
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("en-US", {
