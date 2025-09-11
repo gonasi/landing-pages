@@ -17,7 +17,16 @@ export default [
   ]),
 
   layout("routes/layouts/logged-in-layout.tsx", [
-    route("ad-sets/:adSetId", "routes/private/ad-sets/view-ad-set.tsx"),
+    route("ad-sets/:adSetId", "routes/private/ad-sets/view-ad-set.tsx", [
+      route(
+        ":adCreativeId/edit",
+        "routes/private/ad-creatives/edit-ad-creative.tsx",
+      ),
+      route(
+        ":adCreativeId/delete",
+        "routes/private/ad-creatives/delete-ad-creative.tsx",
+      ),
+    ]),
   ]),
 
   ...prefix("landing-pages/components", [

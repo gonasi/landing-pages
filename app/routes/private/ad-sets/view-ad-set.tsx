@@ -18,7 +18,7 @@ import {
   Calendar,
 } from "lucide-react";
 import { SearchInput } from "~/components/ui/forms/SearchInput";
-import { useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { fetchAdCreativesByAdSetId } from "~/lib/database/ad-creatives";
 import {
   Table,
@@ -127,156 +127,168 @@ export default function ViewAdSet({
   const { adSets, adCreatives } = loaderData;
 
   return (
-    <FullPageLayout title={adSets.data.ad_set_name} prevLink="/ad-sets">
-      <Card className="my-8">
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle>{adSets.data.ad_set_name}</CardTitle>
-              {/* <CardDescription>
+    <>
+      <FullPageLayout title={adSets.data.ad_set_name} prevLink="/ad-sets">
+        <Card className="my-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle>{adSets.data.ad_set_name}</CardTitle>
+                {/* <CardDescription>
                 Manage your advertising campaigns and ad sets
               </CardDescription> */}
+              </div>
+              <Button onClick={() => navigate("/ad-sets/new")}>Publish</Button>
             </div>
-            <Button onClick={() => navigate("/ad-sets/new")}>Publish</Button>
-          </div>
-          <div className="flex items-center gap-4 mt-4">
-            <div className="relative flex-1 max-w-sm">
-              <SearchInput />
+            <div className="flex items-center gap-4 mt-4">
+              <div className="relative flex-1 max-w-sm">
+                <SearchInput />
+              </div>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-card">
-                <TableHead className="font-semibold">Content</TableHead>
-                <TableHead className="font-semibold">Media</TableHead>
-                <TableHead className="font-semibold">Status</TableHead>
-                <TableHead className="font-semibold">Metadata</TableHead>
-                <TableHead className="font-semibold">Created</TableHead>
-                <TableHead className="w-[70px]"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {adCreatives.data.map((item, index) => (
-                <TableRow
-                  key={item.id}
-                  className={`hover:bg-muted/50 transition-colors ${index % 2 === 0 ? "bg-background" : "bg-muted/20"}`}
-                >
-                  <TableCell className="max-w-xs">
-                    <div className="space-y-2">
-                      <h4 className="font-medium text-sm leading-relaxed text-balance">
-                        {item.headline}
-                      </h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed text-pretty line-clamp-2">
-                        {item.body_text}
-                      </p>
-                    </div>
-                  </TableCell>
-
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted overflow-hidden">
-                        {item.file_type === "image" && (
-                          <img
-                            src={item.signed_url}
-                            alt={item.ad_set_name}
-                            className="object-cover w-full h-full"
-                          />
-                        )}
-
-                        {item.file_type === "video" && (
-                          <video
-                            src={item.signed_url}
-                            className="object-cover w-full h-full"
-                            muted
-                            playsInline
-                          />
-                        )}
-
-                        {item.file_type === "unknown" && (
-                          <span className="text-xs text-muted-foreground">
-                            ?
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="space-y-1">
-                        <p className="text-xs text-muted-foreground">
-                          {formatFileSize(item.file_size)}
-                        </p>
-                        <Badge
-                          variant="secondary"
-                          className="text-xs capitalize"
-                        >
-                          {item.file_type}
-                        </Badge>
-                      </div>
-                    </div>
-                  </TableCell>
-
-                  <TableCell>
-                    <Badge
-                      className={`${getStatusColor(item.status)} capitalize`}
-                    >
-                      {item.status}
-                    </Badge>
-                  </TableCell>
-
-                  <TableCell className="max-w-xs">
-                    <div className="space-y-1 text-xs text-muted-foreground">
-                      {item.call_to_action && (
-                        <p className="text-primary font-medium">
-                          CTA: {item.call_to_action}
-                        </p>
-                      )}
-                    </div>
-                  </TableCell>
-
-                  <TableCell>
-                    <div className="flex items-center gap-2 text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <Calendar className="h-3 w-3" />
-                        <span className="text-xs">
-                          {formatDate(item.created_at)}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
-                      <User className="h-3 w-3" />
-                      <span>{item.created_by}</span>
-                    </div>
-                  </TableCell>
-
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" className="h-8 w-8 p-0">
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem>
-                          <Eye className="mr-2 h-4 w-4" />
-                          View
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Edit className="mr-2 h-4 w-4" />
-                          Edit
-                        </DropdownMenuItem>
-                        <DropdownMenuItem className="text-destructive">
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          Delete
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-card">
+                  <TableHead className="font-semibold">Content</TableHead>
+                  <TableHead className="font-semibold">Media</TableHead>
+                  <TableHead className="font-semibold">Status</TableHead>
+                  <TableHead className="font-semibold">Metadata</TableHead>
+                  <TableHead className="font-semibold">Created</TableHead>
+                  <TableHead className="w-[70px]"></TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </FullPageLayout>
+              </TableHeader>
+              <TableBody>
+                {adCreatives.data.map((item, index) => (
+                  <TableRow
+                    key={item.id}
+                    className={`hover:bg-muted/50 transition-colors ${index % 2 === 0 ? "bg-background" : "bg-muted/20"}`}
+                  >
+                    <TableCell className="max-w-xs">
+                      <div className="space-y-2">
+                        <h4 className="font-medium text-sm leading-relaxed text-balance">
+                          {item.headline}
+                        </h4>
+                        <p className="text-xs text-muted-foreground leading-relaxed text-pretty line-clamp-2">
+                          {item.body_text}
+                        </p>
+                      </div>
+                    </TableCell>
+
+                    <TableCell>
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted overflow-hidden">
+                          {item.file_type === "image" && (
+                            <img
+                              src={item.signed_url}
+                              alt={item.ad_set_name}
+                              className="object-cover w-full h-full"
+                            />
+                          )}
+
+                          {item.file_type === "video" && (
+                            <video
+                              src={item.signed_url}
+                              className="object-cover w-full h-full"
+                              muted
+                              playsInline
+                            />
+                          )}
+
+                          {item.file_type === "unknown" && (
+                            <span className="text-xs text-muted-foreground">
+                              ?
+                            </span>
+                          )}
+                        </div>
+
+                        <div className="space-y-1">
+                          <p className="text-xs text-muted-foreground">
+                            {formatFileSize(item.file_size)}
+                          </p>
+                          <Badge
+                            variant="secondary"
+                            className="text-xs capitalize"
+                          >
+                            {item.file_type}
+                          </Badge>
+                        </div>
+                      </div>
+                    </TableCell>
+
+                    <TableCell>
+                      <Badge
+                        className={`${getStatusColor(item.status)} capitalize`}
+                      >
+                        {item.status}
+                      </Badge>
+                    </TableCell>
+
+                    <TableCell className="max-w-xs">
+                      <div className="space-y-1 text-xs text-muted-foreground">
+                        {item.call_to_action && (
+                          <p className="text-primary font-medium">
+                            CTA: {item.call_to_action}
+                          </p>
+                        )}
+                      </div>
+                    </TableCell>
+
+                    <TableCell>
+                      <div className="flex items-center gap-2 text-sm">
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Calendar className="h-3 w-3" />
+                          <span className="text-xs">
+                            {formatDate(item.created_at)}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground mt-1">
+                        <User className="h-3 w-3" />
+                        <span>{item.created_by}</span>
+                      </div>
+                    </TableCell>
+
+                    <TableCell>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="h-8 w-8 p-0">
+                            <MoreHorizontal className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem
+                            onClick={() =>
+                              navigate(
+                                `/ad-sets/${params.adSetId}/${item.id}/edit`
+                              )
+                            }
+                          >
+                            <Edit className="mr-2 h-4 w-4" />
+                            Edit
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            className="text-destructive"
+                            onClick={() =>
+                              navigate(
+                                `/ad-sets/${params.adSetId}/${item.id}/delete`
+                              )
+                            }
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            Delete
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </FullPageLayout>
+      <Outlet />
+    </>
   );
 }
