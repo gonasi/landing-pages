@@ -137,10 +137,7 @@ export default function ViewAdSet({
                 Manage your advertising campaigns and ad sets
               </CardDescription> */}
             </div>
-            <Button onClick={() => navigate("/ad-sets/new")}>
-              <Plus className="mr-2 h-4 w-4" />
-              New Ad Set
-            </Button>
+            <Button onClick={() => navigate("/ad-sets/new")}>Publish</Button>
           </div>
           <div className="flex items-center gap-4 mt-4">
             <div className="relative flex-1 max-w-sm">
@@ -179,11 +176,32 @@ export default function ViewAdSet({
 
                   <TableCell>
                     <div className="flex items-center gap-3">
-                      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted">
-                        <img src={item.signed_url} alt={item.file_name} />
+                      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-muted overflow-hidden">
+                        {item.file_type === "image" && (
+                          <img
+                            src={item.signed_url}
+                            alt={item.ad_set_name}
+                            className="object-cover w-full h-full"
+                          />
+                        )}
+
+                        {item.file_type === "video" && (
+                          <video
+                            src={item.signed_url}
+                            className="object-cover w-full h-full"
+                            muted
+                            playsInline
+                          />
+                        )}
+
+                        {item.file_type === "unknown" && (
+                          <span className="text-xs text-muted-foreground">
+                            ?
+                          </span>
+                        )}
                       </div>
+
                       <div className="space-y-1">
-                        <p className="text-sm font-medium">{item.file_name}</p>
                         <p className="text-xs text-muted-foreground">
                           {formatFileSize(item.file_size)}
                         </p>
