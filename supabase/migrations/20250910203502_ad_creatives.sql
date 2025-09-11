@@ -5,12 +5,12 @@ create table public.ad_creatives (
   ad_sets_id uuid not null,
   ad_set_name text not null,
   file_url text not null, -- supabase storage path
-  file_type text, -- image, video, carousel
-  file_size bigint,
+  file_type text not null, -- image, video, carousel
+  file_size bigint not null,
   headline text,
   body_text text,
   call_to_action text,
-  status text default 'draft' check (status in ('draft', 'publishing', 'published', 'failed')),
+  status text not null default 'draft' check (status in ('draft', 'publishing', 'published', 'failed')),
   meta_creative_id text, -- populated after successful publish
   meta_ad_id text, -- populated after ad creation
   created_at timestamp with time zone not null default now(),
