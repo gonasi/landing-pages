@@ -1,2 +1,2 @@
 export * from "./scanFolders";
-export * from "./createAdSet";
+export * from "./insertCampaignAndAdSet";

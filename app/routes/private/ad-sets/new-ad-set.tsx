@@ -11,7 +11,6 @@ import { Button } from "~/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog";
@@ -22,17 +21,15 @@ import {
   type NewAdSetSchemaTypes,
 } from "~/lib/schemas/ad-sets";
 import { useIsPending } from "~/utils/misc";
-import type { Route } from "../+types/new-add";
 import { createClient } from "~/lib/supabase/supabase.server";
 import {
   dataWithError,
   redirectWithError,
   redirectWithSuccess,
 } from "remix-toast";
-import { FileField } from "~/components/ui/forms/FileField";
-import { createAdCreative } from "~/lib/database/ads";
-import { scanFolders } from "~/lib/database/ad-sets";
+import { insertCampaignAndAdSet, scanFolders } from "~/lib/database/ad-sets";
 import { SearchableDropDown } from "~/components/ui/forms/SearchableDropDown";
+import type { Route } from "./+types/new-ad-set";
 
 export function meta() {
   return [
@@ -54,7 +51,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   return data;
 }
 
-export async function action({ request, params }: Route.ActionArgs) {
+export async function action({ request }: Route.ActionArgs) {
   const formData = await request.formData();
 
   const { supabase } = createClient(request);
@@ -70,13 +67,13 @@ export async function action({ request, params }: Route.ActionArgs) {
     return { errors, defaultValues };
   }
 
-  const { success, message } = await createAdCreative({
+  const { success, message } = await insertCampaignAndAdSet({
     supabase,
     data,
   });
 
   return success
-    ? redirectWithSuccess(`/ad-sets`, message)
+    ? redirectWithSuccess(`/ad-sets/${data.ad_set_id}`, message)
     : dataWithError(null, message);
 }
 
