@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { NavbarLink } from "./NavbarLink";
-import { ChevronDown, House } from "lucide-react";
+import { ChevronDown, ClipboardList } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,11 @@ export function TopNav({ user }: TopNavProps) {
       <div className="container mx-auto flex justify-between items-center px-4">
         {/* Left-side menu items */}
         <div className="flex space-x-4">
-          <NavbarLink icon={<House size={20} />} to="/ads" name="Ads" />
+          <NavbarLink
+            icon={<ClipboardList size={20} />}
+            to="/ad-sets"
+            name="Ad Sets"
+          />
         </div>
 
         {/* Right-side menu items */}

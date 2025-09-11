@@ -18,9 +18,9 @@ export type Database = {
       graphql: {
         Args: {
           extensions?: Json
-          variables?: Json
-          query?: string
           operationName?: string
+          query?: string
+          variables?: Json
         }
         Returns: Json
       }
@@ -36,89 +36,137 @@ export type Database = {
     Tables: {
       ad_creatives: {
         Row: {
-          body_text: string
+          ad_set_name: string
+          ad_sets_id: string
+          body_text: string | null
           call_to_action: string | null
-          created_at: string
-          created_by: string
-          headline: string
-          id: string
-          image_url: string
-          name: string
-          updated_at: string
-        }
-        Insert: {
-          body_text: string
-          call_to_action?: string | null
-          created_at?: string
-          created_by: string
-          headline: string
-          id?: string
-          image_url: string
-          name: string
-          updated_at?: string
-        }
-        Update: {
-          body_text?: string
-          call_to_action?: string | null
-          created_at?: string
-          created_by?: string
-          headline?: string
-          id?: string
-          image_url?: string
-          name?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      ad_jobs: {
-        Row: {
-          campaign_id: string | null
-          created_at: string
-          created_by: string
-          creative_id: string
-          error_message: string | null
+          campaign_id: string
+          created_at: string | null
+          created_by: string | null
+          file_size: number | null
+          file_type: string | null
+          file_url: string
+          headline: string | null
           id: string
           meta_ad_id: string | null
           meta_creative_id: string | null
-          page_id: string | null
-          processed_at: string | null
-          retry_count: number | null
+          published_at: string | null
           status: string | null
-          updated_at: string
+          updated_at: string | null
+          updated_by: string | null
         }
         Insert: {
-          campaign_id?: string | null
-          created_at?: string
-          created_by: string
-          creative_id: string
-          error_message?: string | null
+          ad_set_name: string
+          ad_sets_id: string
+          body_text?: string | null
+          call_to_action?: string | null
+          campaign_id: string
+          created_at?: string | null
+          created_by?: string | null
+          file_size?: number | null
+          file_type?: string | null
+          file_url: string
+          headline?: string | null
           id?: string
           meta_ad_id?: string | null
           meta_creative_id?: string | null
-          page_id?: string | null
-          processed_at?: string | null
-          retry_count?: number | null
+          published_at?: string | null
           status?: string | null
-          updated_at?: string
+          updated_at?: string | null
+          updated_by?: string | null
         }
         Update: {
-          campaign_id?: string | null
-          created_at?: string
-          created_by?: string
-          creative_id?: string
-          error_message?: string | null
+          ad_set_name?: string
+          ad_sets_id?: string
+          body_text?: string | null
+          call_to_action?: string | null
+          campaign_id?: string
+          created_at?: string | null
+          created_by?: string | null
+          file_size?: number | null
+          file_type?: string | null
+          file_url?: string
+          headline?: string | null
           id?: string
           meta_ad_id?: string | null
           meta_creative_id?: string | null
-          page_id?: string | null
-          processed_at?: string | null
-          retry_count?: number | null
+          published_at?: string | null
           status?: string | null
-          updated_at?: string
+          updated_at?: string | null
+          updated_by?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "ad_jobs_creative_id_fkey"
+            foreignKeyName: "ad_creatives_ad_sets_id_fkey"
+            columns: ["ad_sets_id"]
+            isOneToOne: false
+            referencedRelation: "ad_sets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ad_creatives_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ad_publish_queue: {
+        Row: {
+          attempts: number | null
+          completed_at: string | null
+          created_at: string | null
+          created_by: string | null
+          creative_id: string
+          error_details: Json | null
+          id: string
+          last_error: string | null
+          max_attempts: number | null
+          priority: number | null
+          scheduled_for: string | null
+          started_at: string | null
+          status: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          attempts?: number | null
+          completed_at?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          creative_id: string
+          error_details?: Json | null
+          id?: string
+          last_error?: string | null
+          max_attempts?: number | null
+          priority?: number | null
+          scheduled_for?: string | null
+          started_at?: string | null
+          status?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          attempts?: number | null
+          completed_at?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          creative_id?: string
+          error_details?: Json | null
+          id?: string
+          last_error?: string | null
+          max_attempts?: number | null
+          priority?: number | null
+          scheduled_for?: string | null
+          started_at?: string | null
+          status?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "fk_ad_publish_queue_creative_id"
             columns: ["creative_id"]
             isOneToOne: false
             referencedRelation: "ad_creatives"
@@ -126,12 +174,156 @@ export type Database = {
           },
         ]
       }
+      ad_sets: {
+        Row: {
+          ad_set_id: string
+          ad_set_name: string
+          budget: Json | null
+          campaign_id: string
+          created_at: string | null
+          created_by: string | null
+          default_body_text: string | null
+          default_call_to_action: string | null
+          default_headline: string | null
+          folder_path: string
+          id: string
+          schedule: Json | null
+          status: string | null
+          targeting: Json | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          ad_set_id: string
+          ad_set_name: string
+          budget?: Json | null
+          campaign_id: string
+          created_at?: string | null
+          created_by?: string | null
+          default_body_text?: string | null
+          default_call_to_action?: string | null
+          default_headline?: string | null
+          folder_path: string
+          id?: string
+          schedule?: Json | null
+          status?: string | null
+          targeting?: Json | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          ad_set_id?: string
+          ad_set_name?: string
+          budget?: Json | null
+          campaign_id?: string
+          created_at?: string | null
+          created_by?: string | null
+          default_body_text?: string | null
+          default_call_to_action?: string | null
+          default_headline?: string | null
+          folder_path?: string
+          id?: string
+          schedule?: Json | null
+          status?: string | null
+          targeting?: Json | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ad_sets_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      campaigns: {
+        Row: {
+          campaign_id: string
+          created_at: string | null
+          created_by: string | null
+          id: string
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          campaign_id: string
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          campaign_id?: string
+          created_at?: string | null
+          created_by?: string | null
+          id?: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      bulk_create_draft_creatives: {
+        Args: {
+          p_campaign_id: string
+          p_ad_set_id: string
+          p_ad_set_name: string
+          p_files: Json
+          p_default_cta?: string
+          p_default_headline?: string
+          p_default_body?: string
+        }
+        Returns: number
+      }
+      complete_queue_item: {
+        Args: {
+          creative_meta_id?: string
+          queue_id: string
+          ad_meta_id?: string
+        }
+        Returns: boolean
+      }
+      fail_queue_item: {
+        Args: {
+          retry_delay_minutes?: number
+          queue_id: string
+          error_message: string
+          error_details_json?: Json
+        }
+        Returns: boolean
+      }
+      get_next_queue_items: {
+        Args: { batch_size?: number }
+        Returns: {
+          attempts: number | null
+          completed_at: string | null
+          created_at: string | null
+          created_by: string | null
+          creative_id: string
+          error_details: Json | null
+          id: string
+          last_error: string | null
+          max_attempts: number | null
+          priority: number | null
+          scheduled_for: string | null
+          started_at: string | null
+          status: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }[]
+      }
+      start_processing_queue_item: {
+        Args: { queue_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       [_ in never]: never

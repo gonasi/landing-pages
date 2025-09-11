@@ -18,15 +18,21 @@ import {
 import { InputField } from "~/components/ui/forms/InputField";
 import { TextAreaField } from "~/components/ui/forms/TextAreaField";
 import {
-  NewAdCreativeSchema,
-  type NewAdCreativeSchemaTypes,
-} from "~/lib/schemas/ads";
+  NewAdSetSchema,
+  type NewAdSetSchemaTypes,
+} from "~/lib/schemas/ad-sets";
 import { useIsPending } from "~/utils/misc";
-import type { Route } from "./+types/new-add";
+import type { Route } from "../+types/new-add";
 import { createClient } from "~/lib/supabase/supabase.server";
-import { dataWithError, redirectWithSuccess } from "remix-toast";
-import { createAdCreative } from "~/lib/database/ads";
+import {
+  dataWithError,
+  redirectWithError,
+  redirectWithSuccess,
+} from "remix-toast";
 import { FileField } from "~/components/ui/forms/FileField";
+import { createAdCreative } from "~/lib/database/ads";
+import { scanFolders } from "~/lib/database/ad-sets";
+import { SearchableDropDown } from "~/components/ui/forms/SearchableDropDown";
 
 export function meta() {
   return [
@@ -35,7 +41,18 @@ export function meta() {
   ];
 }
 
-const resolver = zodResolver(NewAdCreativeSchema);
+const resolver = zodResolver(NewAdSetSchema);
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const { supabase } = createClient(request);
+  const { data, success, message } = await scanFolders(supabase);
+
+  if (!success || !data?.length) {
+    return redirectWithError("/ad-sets", message);
+  }
+
+  return data;
+}
 
 export async function action({ request, params }: Route.ActionArgs) {
   const formData = await request.formData();
@@ -46,7 +63,7 @@ export async function action({ request, params }: Route.ActionArgs) {
     errors,
     data,
     receivedValues: defaultValues,
-  } = await getValidatedFormData<NewAdCreativeSchemaTypes>(formData, resolver);
+  } = await getValidatedFormData<NewAdSetSchemaTypes>(formData, resolver);
 
   // If validation failed, return errors and default values
   if (errors) {
@@ -59,14 +76,14 @@ export async function action({ request, params }: Route.ActionArgs) {
   });
 
   return success
-    ? redirectWithSuccess(`/ads`, message)
+    ? redirectWithSuccess(`/ad-sets`, message)
     : dataWithError(null, message);
 }
 
-export default function NewAd() {
+export default function NewAd({ params, loaderData }: Route.ComponentProps) {
   const isPending = useIsPending();
 
-  const methods = useRemixForm<NewAdCreativeSchemaTypes>({
+  const methods = useRemixForm<NewAdSetSchemaTypes>({
     mode: "all",
     resolver,
   });
@@ -75,44 +92,67 @@ export default function NewAd() {
 
   return (
     <Dialog open>
-      <DialogContent showCloseButton={false}>
+      <DialogContent
+        showCloseButton={false}
+        className={"lg:max-w-screen-md overflow-y-scroll max-h-[80%]"}
+      >
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle>Create New Ad Creative</DialogTitle>
+            <DialogTitle>Create New Ad Set</DialogTitle>
             <DialogClose>
-              <Link to="/ads">
+              <Link to="/ad-sets">
                 <X />
               </Link>
             </DialogClose>
           </div>
         </DialogHeader>
         <RemixFormProvider {...methods}>
-          <Form
-            method="POST"
-            encType="multipart/form-data"
-            onSubmit={methods.handleSubmit}
-          >
-            <FileField
-              name="image"
-              labelProps={{ children: "Creative Image" }}
-              inputProps={{
+          <Form method="POST" onSubmit={methods.handleSubmit}>
+            {/* Folder Path */}
+            <SearchableDropDown
+              labelProps={{ children: "Folder" }}
+              name="folder_path"
+              searchDropdownProps={{
                 disabled: isDisabled,
-                type: "file",
+                options: loaderData,
+                selectPlaceholder: "Select folder",
               }}
-              description="Upload a creative image (JPG, PNG, or WEBP)."
+              description="Select the folder where this ad set belongs."
             />
 
+            {/* Meta Campaign ID */}
             <InputField
-              name="name"
-              labelProps={{ children: "Creative Name" }}
+              name="meta_campaign_id"
+              labelProps={{ children: "Meta Campaign ID" }}
               inputProps={{
                 disabled: isDisabled,
               }}
-              description="Internal name to help you identify this creative."
+              description="The Meta campaign ID this ad set is linked to."
             />
 
+            {/* Ad Set ID */}
             <InputField
-              name="headline"
+              name="ad_set_id"
+              labelProps={{ children: "Ad Set ID" }}
+              inputProps={{
+                disabled: isDisabled,
+              }}
+              description="Unique identifier for the ad set in Meta."
+            />
+
+            {/* Ad Set Name */}
+            <InputField
+              name="ad_set_name"
+              labelProps={{ children: "Ad Set Name" }}
+              inputProps={{
+                disabled: isDisabled,
+              }}
+              description="Internal name to help you identify this ad set."
+            />
+
+            {/* Default Headline */}
+            <InputField
+              name="default_headline"
               labelProps={{ children: "Headline" }}
               inputProps={{
                 disabled: isDisabled,
@@ -120,8 +160,9 @@ export default function NewAd() {
               description="The primary headline shown in the ad."
             />
 
+            {/* Default Body Text */}
             <TextAreaField
-              name="body_text"
+              name="default_body_text"
               labelProps={{ children: "Body Text" }}
               textareaProps={{
                 disabled: isDisabled,
@@ -129,19 +170,21 @@ export default function NewAd() {
               description="The main message or supporting text for the ad."
             />
 
+            {/* Default Call To Action */}
             <InputField
-              name="call_to_action"
+              name="default_call_to_action"
               labelProps={{ children: "Call To Action" }}
               inputProps={{
                 disabled: isDisabled,
               }}
+              description="Short call-to-action label (e.g., 'Sign Up')."
             />
 
             <Button
               type="submit"
               disabled={isPending || !methods.formState.isDirty}
             >
-              Save Creative
+              Save Ad Set
             </Button>
           </Form>
         </RemixFormProvider>

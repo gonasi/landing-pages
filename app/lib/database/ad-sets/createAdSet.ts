@@ -8,7 +8,7 @@ type CreateAdCreativeArgs = {
   supabase: TypedSupabaseClient;
 };
 
-export async function createAdCreative({
+export async function createAdSet({
   data,
   supabase,
 }: CreateAdCreativeArgs) {

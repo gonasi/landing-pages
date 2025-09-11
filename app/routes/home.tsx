@@ -27,7 +27,7 @@ export async function loader({ request }: Route.LoaderArgs) {
   const { user } = await getUser(supabase);
 
   if (user) {
-    return redirect("/ads");
+    return redirect("/ad-sets");
   }
 
   return null;
@@ -50,7 +50,7 @@ export async function action({ request }: Route.ActionArgs) {
   if (error)
     return dataWithError(null, error.message || "Incorrect email or password.");
 
-  return redirectDocument(data.redirectTo ?? "/ads", { headers });
+  return redirectDocument(data.redirectTo ?? "/ad-sets", { headers });
 }
 
 export default function Home() {

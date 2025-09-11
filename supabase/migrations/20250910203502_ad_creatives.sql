@@ -8,8 +8,8 @@ create table public.ad_creatives (
   file_type text, -- image, video, carousel
   file_size bigint,
   headline text,
-  body text,
-  cta text,
+  body_text text,
+  call_to_action text,
   status text default 'draft' check (status in ('draft', 'publishing', 'published', 'failed')),
   meta_creative_id text, -- populated after successful publish
   meta_ad_id text, -- populated after ad creation

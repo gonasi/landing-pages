@@ -11,9 +11,8 @@ export default [
   route("signout", "routes/signout.tsx"),
 
   layout("routes/layouts/private-layout.tsx", [
-    route("ads", "routes/private/ads.tsx", [
-      route("new", "routes/private/new-add.tsx"),
-      route("push/:adJobId", "routes/private/push-ad.tsx"),
+    route("ad-sets", "routes/private/ad-sets/ad-sets.tsx", [
+      route("new", "routes/private/ad-sets/new-ad-set.tsx"),
     ]),
   ]),
 

@@ -31,7 +31,7 @@ export function CreativeCard({
     <Card key={creative.id} className="overflow-hidden">
       <div className="aspect-video relative bg-muted">
         <img
-          src={creative.image_url || "/placeholder.svg"}
+          src={creative.image_url || ""}
           alt={creative.name}
           className="w-full h-full object-cover"
         />
@@ -87,7 +87,7 @@ export function CreativeCard({
                 size="sm"
                 variant="outline"
                 className="gap-1 bg-transparent"
-                onClick={() => navigate(`/ads/push/${creative.id}`)}
+                onClick={() => navigate(`/ad-sets/push/${creative.id}`)}
               >
                 Push To Meta Ads
               </Button>
