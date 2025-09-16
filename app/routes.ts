@@ -35,5 +35,9 @@ export default [
       "trust-badges",
       "routes/public/landing-pages/components/trust-badges.tsx",
     ),
+    route(
+      "this-anti-choking-device",
+      "routes/public/landing-pages/components/this-anti-choking-device.tsx",
+    ),
   ]),
 ] satisfies RouteConfig;
