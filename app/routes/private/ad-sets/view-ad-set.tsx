@@ -9,14 +9,13 @@ import {
   Images,
   FileVideo,
   FileImage,
-  Plus,
-  MoreHorizontal,
-  Eye,
   Edit,
   Trash2,
   User,
   Calendar,
+  MoreHorizontal,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { SearchInput } from "~/components/ui/forms/SearchInput";
 import { Outlet, useNavigate } from "react-router";
 import { fetchAdCreativesByAdSetId } from "~/lib/database/ad-creatives";
@@ -35,6 +34,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
+import { PaginationBar } from "~/components/ui/forms/PaginationBar";
 
 export function meta() {
   return [
@@ -284,6 +284,18 @@ export default function ViewAdSet({
                   </TableRow>
                 ))}
               </TableBody>
+              {/* Pagination bar fade-in */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.3 }}
+                className="pb-8"
+              >
+                <PaginationBar
+                  totalItems={adCreatives.count ?? 0}
+                  itemsPerPage={12}
+                />
+              </motion.div>
             </Table>
           </CardContent>
         </Card>

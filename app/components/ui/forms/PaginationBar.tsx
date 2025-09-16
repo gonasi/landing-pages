@@ -17,7 +17,7 @@ interface PaginationBarProps {
 
 export function PaginationBar({
   totalItems,
-  itemsPerPage = 2,
+  itemsPerPage = 12,
 }: PaginationBarProps) {
   const [searchParams] = useSearchParams();
 
