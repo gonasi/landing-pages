@@ -37,6 +37,12 @@ export default function ThisAntiChokingDevice() {
             className="rounded-xl shadow-lg max-h-96 object-cover"
           />
         </div>
+        <div>
+          <img
+            src="https://prod-assets.gu-plat.com/imager-x/uploads/LifeVac/622318/LVMedia_59e542b2f0e9b9727cab423ebede99ee.webp"
+            alt="as seen on"
+          />
+        </div>
       </div>
     </section>
   );
