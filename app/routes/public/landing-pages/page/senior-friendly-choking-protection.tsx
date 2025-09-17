@@ -144,6 +144,39 @@ export default function SeniorFriendlyChokingProtection() {
           ))}
         </div>
       </div>
+
+      {/* Dont become another headline section */}
+      <div className="container p-4 mx-auto">
+        <div className="flex flex-col items-center md:flex-row space-x-0 md:space-x-8 space-y-8 md:space-y-0">
+          <div className="w-full">
+            <h1 className="text-4xl font-extrabold">
+              Don’t Become Another Headline
+            </h1>
+            <div className="flex flex-col space-y-2 md:space-y-8 pt-4 md:pt-8">
+              <p className="text-lg">
+                Choking is the 4th leading cause of accidental death among
+                seniors in the U.S.
+              </p>
+              <p className="text-lg">
+                Every year, over 5,000 people die from choking.
+              </p>
+              <p className="text-lg">
+                Dysphagia, dry mouth, weakened reflexes, dentures, or simply
+                living alone are some of the most common causes of choking
+                incidents in seniors.
+              </p>
+              <p className="text-lg">
+                In just 4 minutes, choking can cause brain damage, leading to a
+                lifetime of lost independence, while ambulance response times
+                can take 7–14 minutes.
+              </p>
+            </div>
+          </div>
+          <div className="w-full">
+            <h2>some stuff</h2>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
