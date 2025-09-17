@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "~/components/ui/card";
 import { Avatar } from "~/components/ui/avatar";
 import { TestimonialCard } from "~/components/cards/TestimonialCard";
+import TitleWithDivider from "~/components/titles/TitleWithDivider";
+import FeatureCard from "~/components/cards/FeatureCard";
 
 export function meta() {
   return [
@@ -36,6 +38,29 @@ const features = [
   },
 ];
 
+const featureOptions = [
+  {
+    src: "https://img.funnelish.com/14613/758053/1758041315-free-shipping-icon-opt.webp",
+    alt: "Free shipping",
+    title: "Free Shipping",
+  },
+  {
+    src: "https://img.funnelish.com/14613/758053/1758041330-90-days-opt.webp",
+    alt: "Money back guarantee",
+    title: "90 Day Money Back Guarantee",
+  },
+  {
+    src: "https://img.funnelish.com/14613/758053/1758041343-prescription-icon-opt.webp",
+    alt: "No prescription",
+    title: "No Prescription Needed",
+  },
+  {
+    src: "https://img.funnelish.com/14613/758053/1758041664-FDA-logo-opt.webp",
+    alt: "FDA cleared",
+    title: "FDA-Cleared",
+  },
+];
+
 export default function SeniorFriendlyChokingProtection() {
   return (
     <div>
@@ -58,7 +83,11 @@ export default function SeniorFriendlyChokingProtection() {
                 VitalVac is an easy-to-use choking rescue device that can save
                 your life or a loved one’s life in a choking emergency.
               </p>
-              <FeatureList features={features} className="max-w-lg py-4" />
+              <FeatureList
+                features={features}
+                className="max-w-lg py-4"
+                checkStyles="text-red-700"
+              />
               <div className="py-4">
                 <motion.a
                   href="https://firstaiddevices.com/products/vitalvac%C2%AE-your-ultimate-safety-net-against-choking-emergencies"
@@ -73,7 +102,7 @@ export default function SeniorFriendlyChokingProtection() {
                   }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-4 bg-red-600 text-white font-semibold rounded-2xl shadow-md hover:bg-red-700 transition-colors duration-200"
+                  className="px-6 py-4 bg-red-700 text-white font-semibold rounded-2xl shadow-md hover:bg-red-800 transition-colors duration-200"
                 >
                   🚨 Get 52% Off VitalVac – Today Only!
                 </motion.a>
@@ -97,6 +126,24 @@ export default function SeniorFriendlyChokingProtection() {
           <div className="w-full">
             <img src="/assets/images/vital-vac-doctor.png" alt="doctor" />
           </div>
+        </div>
+      </div>
+
+      <div className="py-8">
+        <TitleWithDivider
+          title={
+            <span className="text-3xl px-4 tracking-wide font-extrabold text-red-700">
+              The VitalVac Promise
+            </span>
+          }
+          size="sm"
+          className="my-6"
+          lineClassName="bg-gray-300"
+        />
+        <div className="container mx-auto px-4 flex items-center justify-center">
+          {featureOptions.map((f, idx) => (
+            <FeatureCard key={idx} {...f} />
+          ))}
         </div>
       </div>
     </div>
