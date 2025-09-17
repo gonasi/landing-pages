@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useNavigation,
 } from "react-router";
 import { getToast } from "remix-toast";
 
@@ -17,6 +18,7 @@ import { getUser } from "./lib/database/profile";
 import { combineHeaders } from "./utils/misc";
 import { Toaster, toast as notify } from "sonner";
 import { useEffect } from "react";
+import { LoaderCircle } from "lucide-react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -72,6 +74,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   const { user, toast, session } = useLoaderData<typeof loader>();
+  const navigation = useNavigation();
+  const isNavigating = Boolean(navigation.location);
 
   // Hook to show the toasts
   useEffect(() => {
@@ -83,7 +87,12 @@ export default function App() {
     }
   }, [toast]);
 
-  return <Outlet />;
+  return (
+    <>
+      {isNavigating && <LoaderCircle size={28} className="animate-spin" />}
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
