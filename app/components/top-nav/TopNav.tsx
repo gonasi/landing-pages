@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { NavbarLink } from "./NavbarLink";
-import { ChevronDown, ClipboardList } from "lucide-react";
+import { ChevronDown, ClipboardList, Layers } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +24,11 @@ export function TopNav({ user }: TopNavProps) {
             icon={<ClipboardList size={20} />}
             to="/ad-sets"
             name="Ad Sets"
+          />
+          <NavbarLink
+            icon={<Layers size={20} />}
+            to="/landing-pages"
+            name="Landing Pages"
           />
         </div>
 

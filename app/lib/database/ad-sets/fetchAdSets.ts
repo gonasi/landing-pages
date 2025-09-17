@@ -32,8 +32,8 @@ export async function fetchAdSets({
 
   const { data, count, error } = await query;
 
-  if (error) throw new Error(`Fetch error: ${error.message}`);
-  if (!data || data.length === 0) {
+  // if (error) throw new Error(`Fetch error: ${error.message}`);
+  if (error || !data || data.length === 0) {
     return {
       count: 0,
       data: [],

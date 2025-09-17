@@ -17,10 +17,10 @@ export type Database = {
     Functions: {
       graphql: {
         Args: {
-          extensions?: Json
-          operationName?: string
           query?: string
           variables?: Json
+          extensions?: Json
+          operationName?: string
         }
         Returns: Json
       }
@@ -261,30 +261,30 @@ export type Database = {
     Functions: {
       bulk_create_draft_creatives: {
         Args: {
-          p_campaign_id: string
-          p_ad_set_id: string
           p_ad_set_name: string
-          p_files: Json
-          p_default_headline?: string
           p_default_cta?: string
           p_default_body?: string
+          p_files: Json
+          p_campaign_id: string
+          p_ad_set_id: string
+          p_default_headline?: string
         }
         Returns: number
       }
       complete_queue_item: {
         Args: {
+          ad_meta_id?: string
           queue_id: string
           creative_meta_id?: string
-          ad_meta_id?: string
         }
         Returns: boolean
       }
       fail_queue_item: {
         Args: {
+          retry_delay_minutes?: number
           queue_id: string
           error_message: string
           error_details_json?: Json
-          retry_delay_minutes?: number
         }
         Returns: boolean
       }

@@ -14,6 +14,10 @@ export default [
     route("ad-sets", "routes/private/ad-sets/ad-sets.tsx", [
       route("new", "routes/private/ad-sets/new-ad-set.tsx"),
     ]),
+    route(
+      "landing-pages",
+      "routes/public/landing-pages/landing-pages-index.tsx",
+    ),
   ]),
 
   layout("routes/layouts/logged-in-layout.tsx", [
@@ -38,6 +42,13 @@ export default [
     route(
       "this-anti-choking-device",
       "routes/public/landing-pages/components/this-anti-choking-device.tsx",
+    ),
+  ]),
+
+  ...prefix("landing-pages/page", [
+    route(
+      "senior-friendly-choking-protection",
+      "routes/public/landing-pages/page/senior-friendly-choking-protection.tsx",
     ),
   ]),
 ] satisfies RouteConfig;
