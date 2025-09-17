@@ -11,7 +11,9 @@ export function FeatureCard({ src, alt, title, className }: FeatureCardProps) {
   return (
     <div className={cn("flex flex-col items-center w-40", className)}>
       <img src={src} alt={alt} className="h-10 w-12 object-contain" />
-      <h4 className="font-extrabold text-center py-2">{title}</h4>
+      <h4 className="font-extrabold text-center py-2 text-xs md:text-lg">
+        {title}
+      </h4>
     </div>
   );
 }
