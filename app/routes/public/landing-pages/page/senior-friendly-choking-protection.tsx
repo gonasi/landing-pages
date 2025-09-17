@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { TestimonialCard } from "~/components/cards/TestimonialCard";
 import TitleWithDivider from "~/components/titles/TitleWithDivider";
 import { FeatureCard } from "~/components/cards/FeatureCard";
+import { NumberListWithImageBg } from "~/components/lists/NumberListWithImageBg";
 
 export function meta() {
   return [
@@ -173,7 +174,17 @@ export default function SeniorFriendlyChokingProtection() {
             </div>
           </div>
           <div className="w-full">
-            <h2>some stuff</h2>
+            <NumberListWithImageBg
+              content={[
+                {
+                  number: (
+                    <span className="text-xl font-bold text-blue-600">01</span>
+                  ),
+                  body: "Easily place the mask over your mouth and nose for a secure fit.",
+                  image: "https://via.placeholder.com/150x150.png?text=Step+1",
+                },
+              ]}
+            />
           </div>
         </div>
       </div>
