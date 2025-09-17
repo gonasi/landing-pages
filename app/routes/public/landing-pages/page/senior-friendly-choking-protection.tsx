@@ -2,11 +2,9 @@ import { TopBanner } from "~/components/banners/TopBanner";
 import { CustomerRating1 } from "~/components/customer-ratings/CustomerRating1";
 import { FeatureList } from "~/components/lists/FeatureList";
 import { motion } from "framer-motion";
-import { Card, CardContent } from "~/components/ui/card";
-import { Avatar } from "~/components/ui/avatar";
 import { TestimonialCard } from "~/components/cards/TestimonialCard";
 import TitleWithDivider from "~/components/titles/TitleWithDivider";
-import FeatureCard from "~/components/cards/FeatureCard";
+import { FeatureCard } from "~/components/cards/FeatureCard";
 
 export function meta() {
   return [
