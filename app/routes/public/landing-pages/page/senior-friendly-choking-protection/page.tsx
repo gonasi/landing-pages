@@ -515,6 +515,25 @@ Thank you for your product. You may use my testimonial.`}
             />
           </div>
         </div>
+        <div className="w-full flex items-center justify-center">
+          <motion.a
+            href="https://firstaiddevices.com/products/vitalvac%C2%AE-your-ultimate-safety-net-against-choking-emergencies"
+            target="_blank"
+            rel="noopener noreferrer"
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-4 bg-red-700 text-white font-semibold rounded-2xl shadow-md hover:bg-red-800 transition-colors duration-200"
+          >
+            🚨 Get 52% Off VitalVac – Today Only!
+          </motion.a>
+        </div>
       </section>
     </main>
   );
