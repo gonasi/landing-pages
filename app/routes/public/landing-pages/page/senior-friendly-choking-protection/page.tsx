@@ -263,26 +263,210 @@ export default function SeniorFriendlyChokingProtection() {
         </div>
       </section>
       <section className="container px-4 mx-auto py-8">
-        <TimeLineCard
-          image={
-            "https://img.funnelish.com/14613/761700/1742724704-logo-sign-icon-symbol-ambulance-car-art-mini-bus-design-graphic-vector-template-isolated-red_621257-117.jpg"
-          }
-          title={"Ambulance"}
-          description={
-            "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
-          }
-          component={<AmbulanceTimeline />}
-        />
-        <TimeLineCard
-          image={
-            "https://firstaiddevices.com/cdn/shop/files/VitalVac_4.png?v=1752286237&width=720"
-          }
-          title={"VitalVac"}
-          description={
-            "Choking can kill in less than 10 minutes Time is of the essence when somebody begins to choke. "
-          }
-          component={<ChokeTimeline />}
-        />
+        <div className="flex flex-col space-y-4 md:space-y-8">
+          <TimeLineCard
+            image={
+              "https://img.funnelish.com/14613/761700/1742724704-logo-sign-icon-symbol-ambulance-car-art-mini-bus-design-graphic-vector-template-isolated-red_621257-117.jpg"
+            }
+            title={"Ambulance"}
+            description={
+              "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
+            }
+            component={<AmbulanceTimeline />}
+          />
+          <TimeLineCard
+            image={
+              "https://firstaiddevices.com/cdn/shop/files/VitalVac_4.png?v=1752286237&width=720"
+            }
+            title={"VitalVac"}
+            description={
+              "Choking can kill in less than 10 minutes Time is of the essence when somebody begins to choke. "
+            }
+            component={<ChokeTimeline />}
+          />
+        </div>
+      </section>
+
+      <section className="max-w-5xl px-4 mx-auto py-16">
+        <div className="flex flex-col items-center justify-center md:flex-row space-x-0 md:space-x-8 space-y-4 md:space-y-0">
+          <div className="flex-1">
+            <img
+              src="https://firstaiddevices.com/cdn/shop/files/deviceinaction-ezgif.com-speed-min.gif?v=1725182528"
+              alt="man choking"
+            />
+          </div>
+          <div className="flex-1">
+            <div className="space-y-10 text-gray-800 leading-relaxed">
+              <h2 className="text-2xl font-extrabold text-gray-900">
+                Introducing the VitalVax Anti-Choking Device
+              </h2>
+
+              <p>
+                Choking emergencies happen fast and without warning.
+                <span className="font-semibold">
+                  VitalVax gives you the power to act quickly when every second
+                  counts.
+                </span>
+              </p>
+
+              <p>
+                This simple, effective device is designed for anyone to use,
+                from seniors to caregivers, even when physical strength is
+                limited.
+              </p>
+
+              <p>
+                VitalVax is lightweight, easy to keep at home, and ready
+                whenever you need it most.
+                <span className="font-semibold">
+                  Owning one is not just smart, it is life-saving.
+                </span>
+              </p>
+
+              <p>
+                Accidents can happen to anyone at any time, but with VitalVax,
+                you can be prepared to protect yourself and your loved ones.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-5xl px-4 mx-auto py-16">
+        <div className="flex flex-col md:flex-row space-x-0 md:space-x-8 space-y-4 md:space-y-0">
+          <div className="flex-1">
+            <div className="space-y-10 text-gray-800 leading-relaxed">
+              <h2 className="text-2xl font-extrabold text-gray-900">
+                It’s So Easy to Use
+              </h2>
+
+              <p>
+                The best part about the{" "}
+                <span className="font-semibold">
+                  VitalVax Anti-Choking Device
+                </span>
+                is how simple it is. Almost anyone—from children to seniors—can
+                use it to save a life.
+              </p>
+
+              <p>To use it, just follow these three steps:</p>
+
+              <ul className="list-decimal list-inside space-y-1 font-medium">
+                <li>Place it over the mouth and nose</li>
+                <li>Press to create a good seal</li>
+                <li>Pull back the handle</li>
+              </ul>
+
+              <p>
+                VitalVax forms a secure seal that creates a strong vacuum to
+                clear the airway. In most cases, the object is removed on the
+                first pull. If not, you can repeat the process until the airway
+                is clear.
+              </p>
+            </div>
+          </div>
+          <div className="flex-1">
+            <img
+              src="https://firstaiddevices.com/cdn/shop/files/hottogif-ezgif_com-speed_1440x1440_webp.gif?v=1750626161&width=1346"
+              alt="using vitalvac"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-5xl px-4 mx-auto py-16">
+        <div className="flex flex-col md:flex-row space-x-0 md:space-x-8 space-y-4 md:space-y-0">
+          <div className="flex-1">
+            <img
+              src="https://firstaiddevices.com/cdn/shop/files/vitalVac_Photos-9.png?v=1750626161&width=1346"
+              alt="vitalvac"
+            />
+          </div>
+          <div className="flex-1">
+            <div className="space-y-8 text-gray-800 leading-relaxed">
+              <h2 className="text-2xl font-extrabold text-gray-900">
+                Professionally Designed & Recommended
+              </h2>
+
+              <p>
+                <span className="font-semibold">
+                  VitalVax is trusted by doctors, caregivers, geriatric
+                  specialists, and emergency responders
+                </span>
+                who understand the unique needs of seniors.
+              </p>
+
+              <p>
+                More and more families, seniors, and caregivers are choosing
+                VitalVax as a simple and reliable way to stay safe during
+                choking emergencies.
+              </p>
+
+              <p>
+                It feels like having an extra layer of protection in your
+                home—one that gives you confidence and peace of mind without
+                depending on anyone else.
+              </p>
+            </div>
+            <div className="py-10">
+              <motion.a
+                href="https://firstaiddevices.com/products/vitalvac%C2%AE-your-ultimate-safety-net-against-choking-emergencies"
+                target="_blank"
+                rel="noopener noreferrer"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-4 bg-red-700 text-white font-semibold rounded-2xl shadow-md hover:bg-red-800 transition-colors duration-200"
+              >
+                🚨 Get 52% Off VitalVac – Today Only!
+              </motion.a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16 bg-gray-100">
+        <div className="max-w-5xl px-4 mx-auto">
+          <h1 className="w-full text-center text-3xl md:text-4xl font-extrabold mb-10">
+            Meet Some Of The Lives Saved With VitalVac
+          </h1>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
+              <img
+                src="https://firstaiddevices.com/cdn/shop/files/VitalVac_UGC1531079913419.jpg?v=1732839156"
+                alt="life saved"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
+              <img
+                src="https://firstaiddevices.com/cdn/shop/files/VitalVac_UGCimages_4.jpg?v=1732839149"
+                alt="life saved"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
+              <img
+                src="https://firstaiddevices.com/cdn/shop/files/2.png?v=1723941407"
+                alt="life saved"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
+              <img
+                src="https://firstaiddevices.com/cdn/shop/files/4.png?v=1723941407"
+                alt="life saved"
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
