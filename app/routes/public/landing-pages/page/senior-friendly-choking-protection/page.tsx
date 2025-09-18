@@ -69,6 +69,13 @@ const featureOptions = [
   },
 ];
 
+const images = [
+  "https://firstaiddevices.com/cdn/shop/files/VitalVac_UGC1531079913419.jpg?v=1732839156",
+  "https://firstaiddevices.com/cdn/shop/files/VitalVac_UGCimages_4.jpg?v=1732839149",
+  "https://firstaiddevices.com/cdn/shop/files/2.png?v=1723941407",
+  "https://firstaiddevices.com/cdn/shop/files/4.png?v=1723941407",
+];
+
 export default function SeniorFriendlyChokingProtection() {
   return (
     <main>
@@ -432,39 +439,35 @@ export default function SeniorFriendlyChokingProtection() {
       </section>
       <section className="py-16 bg-gray-100">
         <div className="max-w-5xl px-4 mx-auto">
-          <h1 className="w-full text-center text-3xl md:text-4xl font-extrabold mb-10">
-            Meet Some Of The Lives Saved With VitalVac
-          </h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="w-full text-center text-3xl md:text-4xl font-extrabold mb-10"
+          >
+            Meet Some Of The Lives Saved With SaveLix
+          </motion.h1>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
-              <img
-                src="https://firstaiddevices.com/cdn/shop/files/VitalVac_UGC1531079913419.jpg?v=1732839156"
-                alt="life saved"
-                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
-              <img
-                src="https://firstaiddevices.com/cdn/shop/files/VitalVac_UGCimages_4.jpg?v=1732839149"
-                alt="life saved"
-                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
-              <img
-                src="https://firstaiddevices.com/cdn/shop/files/2.png?v=1723941407"
-                alt="life saved"
-                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="overflow-hidden rounded-2xl shadow-md bg-white">
-              <img
-                src="https://firstaiddevices.com/cdn/shop/files/4.png?v=1723941407"
-                alt="life saved"
-                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            {images.map((src, i) => (
+              <motion.div
+                key={i}
+                className="overflow-hidden rounded-2xl shadow-md bg-white"
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
+                viewport={{ once: true }}
+              >
+                <motion.img
+                  src={src}
+                  alt="life saved"
+                  className="w-full h-48 object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
