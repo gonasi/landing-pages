@@ -12,6 +12,7 @@ import { ChokeTimeline } from "./components/ChokeTimeline";
 import { StarReview } from "./components/StarReview";
 import { ComparisonTable } from "./components/ComparisonTable";
 import { KeyFeatures } from "./components/KeyFeatures";
+import { FAQAccordion } from "./components/FAQAccordion";
 
 export function meta() {
   return [
@@ -562,6 +563,19 @@ Thank you for your product. You may use my testimonial.`}
           </div>
           <div>
             <KeyFeatures />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-grey-50">
+        <div className="max-w-3xl px-4 mx-auto py-16">
+          <div className="w-full flex flex-col items-center py-10 space-y-4">
+            <h1 className="text-3xl font-extrabold text-center w-full">
+              Frequently Asked Questions
+            </h1>
+          </div>
+          <div>
+            <FAQAccordion />
           </div>
         </div>
       </section>
