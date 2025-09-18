@@ -9,6 +9,7 @@ import { NumberListWithImageBg } from "~/components/lists/NumberListWithImageBg"
 import { TimeLineCard } from "./components/TimeLineCard";
 import { AmbulanceTimeline } from "./components/AmbulanceTimeline";
 import { ChokeTimeline } from "./components/ChokeTimeline";
+import { StarReview } from "./components/StarReview";
 
 export function meta() {
   return [
@@ -468,6 +469,50 @@ export default function SeniorFriendlyChokingProtection() {
                 />
               </motion.div>
             ))}
+          </div>
+          <div className="py-8 flex flex-col md:flex-row w-full justify-between">
+            <StarReview
+              profileUrl={
+                "https://img.funnelish.com/14613/308186/1727246652-73x73.png"
+              }
+              profileName={"Norman S."}
+              title={"My Hero Company VitalVac"}
+              body={
+                "The day my order was delivered was a lifesaving day for me. After reading the instructions I felt comfortable in how to use it. 15 minutes later I was taking my medications and one of my many medications got stuck in my throat. I live alone and as I was choking I grabbed the kit and used it on myself. It worked just as stated. It was a life saver (mine). Thank you for a great product that should be in every home and business."
+              }
+              bundleImage={
+                "https://img.funnelish.com/14613/761700/1742800207-1742732620-Simple_to_Use_13-Photoroom_optimized_100.webp"
+              }
+              bundleName={"Purchased VitalVac Family Bundle"}
+            />
+            <StarReview
+              profileUrl={
+                "https://img.funnelish.com/14613/761700/1742800917-1742751176-480467638_10233625086401239_7231635217249386453_n_optimized_100.webp"
+              }
+              profileName={"Kimberly M."}
+              title={"Saved My Grandson’s Life"}
+              body={`My daughter's 2 yr old son, about 2 months ago, found a life saver candy in the couch and proceeded to swallow it. It became lodged and he could not breathe. My son in law hung him upside down and firmly smacked his back. It didn't work. My daughter, remembering that she had just purchased your equipment unwrapped it and quickly administered it to him which pulled the lifesaver out and saved his life.
+My grandson then looked up at his mom and said don't cry mommy l'm okay c.
+Thank you for your product. You may use my testimonial.`}
+              bundleImage={
+                "https://firstaiddevices.com/cdn/shop/files/PHOTO-2024-10-14-02-11-29.jpg?v=1738720423&width=720"
+              }
+              bundleName={"Purchased VitalVac Essential First Aid Kit"}
+            />
+            <StarReview
+              profileUrl={
+                "https://img.funnelish.com/14613/308186/1727246652-73x73.png"
+              }
+              profileName={"Anthoni Banda."}
+              title={"SaveLix saved my dad’s life during a BBQ"}
+              body={
+                "We were BBQ'ing an dad was eating & started choking, this Device literally saved his life, dad was taken to hospital to get checked out, but this literally saved his life, thank you."
+              }
+              bundleImage={
+                "https://firstaiddevices.com/cdn/shop/files/vitalVac_Photos-2.webp?v=1732247123&width=720"
+              }
+              bundleName={"Purchased VitalVac Pro Safety Kit "}
+            />
           </div>
         </div>
       </section>
