@@ -8,6 +8,7 @@ import { FeatureCard } from "~/components/cards/FeatureCard";
 import { NumberListWithImageBg } from "~/components/lists/NumberListWithImageBg";
 import { TimeLineCard } from "./components/TimeLineCard";
 import { AmbulanceTimeline } from "./components/AmbulanceTimeline";
+import { ChokeTimeline } from "./components/ChokeTimeline";
 
 export function meta() {
   return [
@@ -280,7 +281,7 @@ export default function SeniorFriendlyChokingProtection() {
           description={
             "Choking can kill in less than 10 minutes Time is of the essence when somebody begins to choke. "
           }
-          component={<AmbulanceTimeline />}
+          component={<ChokeTimeline />}
         />
       </section>
     </main>
