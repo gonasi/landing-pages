@@ -272,11 +272,11 @@ export default function SeniorFriendlyChokingProtection() {
         />
         <TimeLineCard
           image={
-            "https://img.funnelish.com/14613/761700/1742724704-logo-sign-icon-symbol-ambulance-car-art-mini-bus-design-graphic-vector-template-isolated-red_621257-117.jpg"
+            "https://firstaiddevices.com/cdn/shop/files/VitalVac_4.png?v=1752286237&width=720"
           }
-          title={"Ambulance"}
+          title={"VitalVac"}
           description={
-            "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
+            "Choking can kill in less than 10 minutes Time is of the essence when somebody begins to choke. "
           }
         />
       </section>
