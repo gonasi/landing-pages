@@ -11,6 +11,7 @@ import { AmbulanceTimeline } from "./components/AmbulanceTimeline";
 import { ChokeTimeline } from "./components/ChokeTimeline";
 import { StarReview } from "./components/StarReview";
 import { ComparisonTable } from "./components/ComparisonTable";
+import { KeyFeatures } from "./components/KeyFeatures";
 
 export function meta() {
   return [
@@ -545,6 +546,23 @@ Thank you for your product. You may use my testimonial.`}
         </div>
         <div>
           <ComparisonTable />
+        </div>
+      </section>
+
+      <section className="bg-yellow-50">
+        <div className="max-w-5xl px-4 mx-auto py-16">
+          <div className="w-full flex flex-col items-center py-10 space-y-4">
+            <h1 className="text-3xl font-extrabold text-center w-full">
+              Key Features
+            </h1>
+            <p className="text-center">
+              Countless seniors, caregivers, and parents agree: SaveLix is a
+              must-have for every household.
+            </p>
+          </div>
+          <div>
+            <KeyFeatures />
+          </div>
         </div>
       </section>
     </main>
