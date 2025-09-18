@@ -7,6 +7,7 @@ import TitleWithDivider from "~/components/titles/TitleWithDivider";
 import { FeatureCard } from "~/components/cards/FeatureCard";
 import { NumberListWithImageBg } from "~/components/lists/NumberListWithImageBg";
 import { TimeLineCard } from "./components/TimeLineCard";
+import { AmbulanceTimeline } from "./components/AmbulanceTimeline";
 
 export function meta() {
   return [
@@ -269,6 +270,7 @@ export default function SeniorFriendlyChokingProtection() {
           description={
             "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
           }
+          component={<AmbulanceTimeline />}
         />
         <TimeLineCard
           image={
@@ -278,6 +280,7 @@ export default function SeniorFriendlyChokingProtection() {
           description={
             "Choking can kill in less than 10 minutes Time is of the essence when somebody begins to choke. "
           }
+          component={<AmbulanceTimeline />}
         />
       </section>
     </main>

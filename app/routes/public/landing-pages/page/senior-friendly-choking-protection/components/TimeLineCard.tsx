@@ -4,12 +4,14 @@ interface ITimelineCardProps {
   image: string;
   title: string;
   description: string;
+  component: React.ReactNode;
 }
 
 export function TimeLineCard({
   image,
   title,
   description,
+  component,
 }: ITimelineCardProps) {
   return (
     <Card>
@@ -23,7 +25,7 @@ export function TimeLineCard({
             </div>
           </div>
         </div>
-        <div className="w-full">right</div>
+        <div className="w-full">{component}</div>
       </CardContent>
     </Card>
   );
