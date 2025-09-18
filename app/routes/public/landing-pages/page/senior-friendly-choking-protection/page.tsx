@@ -470,7 +470,7 @@ export default function SeniorFriendlyChokingProtection() {
               </motion.div>
             ))}
           </div>
-          <div className="py-8 flex flex-col md:flex-row w-full justify-between">
+          <div className="py-8 flex flex-col md:flex-row w-full justify-between space-y-4 md:space-y-0">
             <StarReview
               profileUrl={
                 "https://img.funnelish.com/14613/308186/1727246652-73x73.png"
