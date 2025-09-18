@@ -247,6 +247,16 @@ export default function SeniorFriendlyChokingProtection() {
           </div>
         </div>
       </section>
+
+      {/* ======= Don’t Become Another Headline Section ======= */}
+      <section className="container px-4 mx-auto pt-8">
+        <div className="py-10 flex flex-col items-center justify-center space-y-2">
+          <h1 className="text-3xl font-extrabold">Every Second Counts</h1>
+          <h2 className="text-3xl font-extrabold text-orange-500">
+            Only 10 minutes to save a life
+          </h2>
+        </div>
+      </section>
     </main>
   );
 }
