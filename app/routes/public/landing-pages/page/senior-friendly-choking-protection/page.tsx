@@ -10,6 +10,7 @@ import { TimeLineCard } from "./components/TimeLineCard";
 import { AmbulanceTimeline } from "./components/AmbulanceTimeline";
 import { ChokeTimeline } from "./components/ChokeTimeline";
 import { StarReview } from "./components/StarReview";
+import { ComparisonTable } from "./components/ComparisonTable";
 
 export function meta() {
   return [
@@ -533,6 +534,17 @@ Thank you for your product. You may use my testimonial.`}
           >
             🚨 Get 52% Off VitalVac – Today Only!
           </motion.a>
+        </div>
+      </section>
+
+      <section className="max-w-5xl px-4 mx-auto py-16">
+        <div className="w-full flex items-center py-10">
+          <h1 className="text-4xl font-extrabold text-center w-full">
+            What Makes VitalVac So Different
+          </h1>
+        </div>
+        <div>
+          <ComparisonTable />
         </div>
       </section>
     </main>
