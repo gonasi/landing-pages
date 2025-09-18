@@ -148,7 +148,8 @@ export function ComparisonTable() {
   return (
     <Card className="overflow-hidden">
       <div className="p-6">
-        <div className="grid grid-cols-3 gap-6 items-center">
+        {/* header: same grid template so columns line up */}
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_4rem_4rem] gap-6 items-center px-4">
           <div></div>
           <div className="text-center">
             <h2 className="text-xl font-semibold">VitalVac</h2>
@@ -163,12 +164,15 @@ export function ComparisonTable() {
         {features.map((feature, index) => (
           <div
             key={feature.name}
-            className={`grid grid-cols-3 gap-6 p-6 items-start ${index % 2 === 0 ? "bg-background" : "bg-muted/30"}`}
+            className={`grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_4rem_4rem] gap-6 p-6 items-start ${
+              index % 2 === 0 ? "bg-background" : "bg-muted/30"
+            }`}
           >
-            <div className="space-y-2">
+            {/* First column: text, allow shrinking with min-w-0 */}
+            <div className="space-y-2 min-w-0">
               <div className="flex items-center gap-3">
                 <div className="text-primary">{feature.icon}</div>
-                <h3 className="font-semibold text-foreground">
+                <h3 className="font-semibold text-foreground truncate">
                   {feature.name}
                 </h3>
               </div>
@@ -177,11 +181,13 @@ export function ComparisonTable() {
               </p>
             </div>
 
-            <div className="text-center space-y-3">
+            {/* Second column: centered icon (our product) */}
+            <div className="flex flex-col items-center justify-center space-y-3">
               <StatusIcon status={feature.ourProduct.status} />
             </div>
 
-            <div className="text-center space-y-3">
+            {/* Third column: centered icon (competitor) */}
+            <div className="flex flex-col items-center justify-center space-y-3">
               <StatusIcon status={feature.competitor.status} />
             </div>
           </div>
