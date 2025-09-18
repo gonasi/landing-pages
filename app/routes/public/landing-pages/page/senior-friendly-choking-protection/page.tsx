@@ -556,7 +556,7 @@ Thank you for your product. You may use my testimonial.`}
               Key Features
             </h1>
             <p className="text-center">
-              Countless seniors, caregivers, and parents agree: SaveLix is a
+              Countless seniors, caregivers, and parents agree: VitalVac is a
               must-have for every household.
             </p>
           </div>
