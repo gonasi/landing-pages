@@ -447,7 +447,7 @@ export default function SeniorFriendlyChokingProtection() {
             viewport={{ once: true }}
             className="w-full text-center text-3xl md:text-4xl font-extrabold mb-10"
           >
-            Meet Some Of The Lives Saved With SaveLix
+            Meet Some Of The Lives Saved With VitalVac
           </motion.h1>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
@@ -504,7 +504,7 @@ Thank you for your product. You may use my testimonial.`}
                 "https://img.funnelish.com/14613/308186/1727246652-73x73.png"
               }
               profileName={"Anthoni Banda."}
-              title={"SaveLix saved my dad’s life during a BBQ"}
+              title={"VitalVac saved my dad’s life during a BBQ"}
               body={
                 "We were BBQ'ing an dad was eating & started choking, this Device literally saved his life, dad was taken to hospital to get checked out, but this literally saved his life, thank you."
               }
