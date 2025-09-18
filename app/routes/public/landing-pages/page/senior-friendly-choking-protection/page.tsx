@@ -305,13 +305,13 @@ export default function SeniorFriendlyChokingProtection() {
           <div className="flex-1">
             <div className="space-y-10 text-gray-800 leading-relaxed">
               <h2 className="text-2xl font-extrabold text-gray-900">
-                Introducing the VitalVax Anti-Choking Device
+                Introducing the VitalVac Anti-Choking Device
               </h2>
 
               <p>
                 Choking emergencies happen fast and without warning.
                 <span className="font-semibold">
-                  VitalVax gives you the power to act quickly when every second
+                  VitalVac gives you the power to act quickly when every second
                   counts.
                 </span>
               </p>
@@ -323,7 +323,7 @@ export default function SeniorFriendlyChokingProtection() {
               </p>
 
               <p>
-                VitalVax is lightweight, easy to keep at home, and ready
+                VitalVac is lightweight, easy to keep at home, and ready
                 whenever you need it most.
                 <span className="font-semibold">
                   Owning one is not just smart, it is life-saving.
@@ -331,7 +331,7 @@ export default function SeniorFriendlyChokingProtection() {
               </p>
 
               <p>
-                Accidents can happen to anyone at any time, but with VitalVax,
+                Accidents can happen to anyone at any time, but with VitalVac,
                 you can be prepared to protect yourself and your loved ones.
               </p>
             </div>
@@ -350,7 +350,7 @@ export default function SeniorFriendlyChokingProtection() {
               <p>
                 The best part about the{" "}
                 <span className="font-semibold">
-                  VitalVax Anti-Choking Device
+                  VitalVac Anti-Choking Device
                 </span>
                 is how simple it is. Almost anyone—from children to seniors—can
                 use it to save a life.
@@ -365,7 +365,7 @@ export default function SeniorFriendlyChokingProtection() {
               </ul>
 
               <p>
-                VitalVax forms a secure seal that creates a strong vacuum to
+                VitalVac forms a secure seal that creates a strong vacuum to
                 clear the airway. In most cases, the object is removed on the
                 first pull. If not, you can repeat the process until the airway
                 is clear.
@@ -397,7 +397,7 @@ export default function SeniorFriendlyChokingProtection() {
 
               <p>
                 <span className="font-semibold">
-                  VitalVax is trusted by doctors, caregivers, geriatric
+                  VitalVac is trusted by doctors, caregivers, geriatric
                   specialists, and emergency responders
                 </span>
                 who understand the unique needs of seniors.
@@ -405,7 +405,7 @@ export default function SeniorFriendlyChokingProtection() {
 
               <p>
                 More and more families, seniors, and caregivers are choosing
-                VitalVax as a simple and reliable way to stay safe during
+                VitalVac as a simple and reliable way to stay safe during
                 choking emergencies.
               </p>
 
