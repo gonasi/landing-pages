@@ -48,7 +48,7 @@ export default [
   ...prefix("landing-pages/page", [
     route(
       "senior-friendly-choking-protection",
-      "routes/public/landing-pages/page/senior-friendly-choking-protection.tsx",
+      "routes/public/landing-pages/page/senior-friendly-choking-protection/page.tsx",
     ),
   ]),
 ] satisfies RouteConfig;

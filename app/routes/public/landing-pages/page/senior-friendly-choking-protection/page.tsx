@@ -6,6 +6,7 @@ import { TestimonialCard } from "~/components/cards/TestimonialCard";
 import TitleWithDivider from "~/components/titles/TitleWithDivider";
 import { FeatureCard } from "~/components/cards/FeatureCard";
 import { NumberListWithImageBg } from "~/components/lists/NumberListWithImageBg";
+import { TimeLineCard } from "./components/TimeLineCard";
 
 export function meta() {
   return [
@@ -258,6 +259,26 @@ export default function SeniorFriendlyChokingProtection() {
             Only 10 minutes to save a life
           </h2>
         </div>
+      </section>
+      <section className="container px-4 mx-auto py-8">
+        <TimeLineCard
+          image={
+            "https://img.funnelish.com/14613/761700/1742724704-logo-sign-icon-symbol-ambulance-car-art-mini-bus-design-graphic-vector-template-isolated-red_621257-117.jpg"
+          }
+          title={"Ambulance"}
+          description={
+            "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
+          }
+        />
+        <TimeLineCard
+          image={
+            "https://img.funnelish.com/14613/761700/1742724704-logo-sign-icon-symbol-ambulance-car-art-mini-bus-design-graphic-vector-template-isolated-red_621257-117.jpg"
+          }
+          title={"Ambulance"}
+          description={
+            "According to the NHTSA, the U.S. has an ambulance response time target of 8-12 minutes. "
+          }
+        />
       </section>
     </main>
   );
