@@ -13,6 +13,7 @@ import { StarReview } from "./components/StarReview";
 import { ComparisonTable } from "./components/ComparisonTable";
 import { KeyFeatures } from "./components/KeyFeatures";
 import { FAQAccordion } from "./components/FAQAccordion";
+import { SpecialOfferPoster } from "./components/SpecialOfferPoster";
 
 export function meta() {
   return [
@@ -565,6 +566,15 @@ Thank you for your product. You may use my testimonial.`}
             <KeyFeatures />
           </div>
         </div>
+      </section>
+
+      <section className="max-w-5xl px-4 mx-auto py-16">
+        <div className="flex items-center py-8 justify-center">
+          <h1 className="text-4xl font-extrabold">
+            Always Be Prepared. Get Your VitalVac Today.
+          </h1>
+        </div>
+        <SpecialOfferPoster />
       </section>
 
       <section className="bg-grey-50">
